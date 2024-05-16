@@ -1,0 +1,21 @@
+[tool.ruff]
+fix = true
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "preserve"
+
+[tool.ruff.lint]
+extend-select = ["I001"] # auto sort import 
+select = ["E", "F", "W"]
+unfixable = ["F401"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"__main__.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-third-party = ["numpy"]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
