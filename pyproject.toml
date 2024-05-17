@@ -2,11 +2,16 @@
 # https://docs.astral.sh/ruff/configuration/ default
 # https://docs.astral.sh/ruff/settings/
 # exclude=[]
-extend-exclude = [] #ignore file or directory                                                                                  
+extend-exclude = [] #ignore file or directory                                                                                               
 fix = true 
 indent-width = 4 
 line-length = 88 # black is 88
 target-version = "py310" # >=3.10
+
+[tool.ruff.format]
+indent-style = "space" 
+quote-style = "preserve" # double/single/preserve
+skip-magic-trailing-comma = false 
 
 [tool.ruff.lint]
 # https://docs.astral.sh/ruff/rules/
@@ -15,17 +20,12 @@ ignore = [
   "E501", # Avoid enforcing line-length violations (`E501`)
 ]
 select = ["E4", "E7", "E9", "F", "B", "C4", "UP"]
-unfixable = ["F401"]
 
+unfixable = ["F401"]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-[tool.ruff.format]
-indent-style = "space" 
-quote-style = "preserve" # double/single/preserve
-skip-magic-trailing-comma = false 
-
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "**/{cookbook,docs,tools,tests}/*" = [
   "E402", # Allow imports to appear anywhere in docs
   "F401", # Allow "imported but unused" example code
@@ -35,8 +35,8 @@ skip-magic-trailing-comma = false
 "__init__.py" = ["E402"]
 
 [tool.ruff.lint.isort]
-known_first_party = ["my_project"]
-known_third_party = ["requests", "fastapi", "pydantic", "starlette", "numpy"]
+known-first-party = ["my_project"]
+known-third-party = ["requests", "fastapi", "pydantic", "starlette", "numpy"]
 
 [build-system]
 build-backend = "setuptools.build_meta"
